@@ -13,5 +13,21 @@ public class Word {
     mDefinitions = new ArrayList<Definition>();
   }
 
+  public String getName() {
+    return mName;
+  }
+
+  public int getId() {
+    return mId;
+  }
+
+  public static ArrayList<Word> all() {
+    return instances;
+  }
+
+  public ArrayList<Definition> getDefinitions() {
+    return mDefinitions;
+  }
+
 
 }
