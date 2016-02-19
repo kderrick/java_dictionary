@@ -31,7 +31,7 @@ public class App {
         }, new VelocityTemplateEngine());
 
       post("/definitions", (request,response) -> {
-        HashMap<String, Object>model = new HashMap<String, Object>();
+        HashMap<String, Object> model = new HashMap<String, Object>();
         Word word = Word.find(Integer.parseInt(request.queryParams("wordId")));
         String description = request.queryParams("description");
         Definition newDefinition = new Definition(description);

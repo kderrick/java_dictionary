@@ -1,6 +1,6 @@
-<h3>Here are all the definitions for this word:</h3>
 word.vtl
-#foreach($definition in $definition.getDefinitions())
+<h3>Here are all the definitions for this word:</h3>
+#foreach($definition in $word.getDefinitions())
  <h3>$definition.getDescription()</a></h3>
 #end
 
