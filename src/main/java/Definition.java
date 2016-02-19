@@ -6,10 +6,22 @@ public class Definition {
   private String mDescription;
   private int mId;
 
-  public Definition (String desription) {
+  public Definition (String description) {
     mDescription = description;
     instances.add(this);
     mId = instances.size();
+  }
+
+  public String getDescription() {
+    return mDescription;
+  }
+
+  public int getId() {
+    return mId;
+  }
+
+  public static void clear() {
+    instances.clear();
   }
 
 }
