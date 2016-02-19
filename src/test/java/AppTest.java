@@ -24,4 +24,46 @@ public class AppTest extends FluentTest {
       assertThat(pageSource()).contains("Dictionary");
   }
 
+  @Test
+  public void wordIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add a New Word"));
+    fill("#name").with("Kitten");
+    submit(".btn");
+    assertThat(pageSource()).contains("Your word has been saved.");
+  }
+
+  @Test
+  public void wordIsDisplayedTest() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Kitten");
+    submit(".btn");
+    click("a", withText("View words"));
+    assertThat(pageSource()).contains("Kitten");
+  }
+
+  @Test
+  public void wordDefinitionsFormIsDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Kitten");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Kitten"));
+    click("a", withText("Add a new definition"));
+    assertThat(pageSource()).contains("Add a new Definition to Kitten");
+  }
+
+  @Test
+  public void definitionsIsAddedAndDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Kitten");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Kitten"));
+    click("a", withText("Add a new definition"));
+    fill("#description").with("A young feline");
+    submit(".btn");
+    assertThat(pageSource()).contains("A young feline");
+  }
+
 }
