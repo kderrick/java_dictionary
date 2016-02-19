@@ -71,6 +71,20 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+      get("/words/:id", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("word", Word.find(Integer.parseInt(request.params(":id"))));
+        model.put("template", "templates/word.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
+      get("/words/:id/definitions/new", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("word", Word.find(Integer.parseInt(request.params(":id"))));
+        model.put("template", "templates/word-definitions-form.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
         //RESTful ARCHITECTURE
         //Use POST to create something on the server
         //Use GET to retrieve something from the server
