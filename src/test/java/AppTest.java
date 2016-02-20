@@ -70,4 +70,10 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("A young feline");
   }
 
+  @Test
+    public void definitionNotFoundMessageShown() {
+    goTo("http://localhost:4567/definitions/999");
+    assertThat(pageSource()).contains("Definition not found");
+}
+
 }
